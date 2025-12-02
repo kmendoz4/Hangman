@@ -1,0 +1,30 @@
+#words for hangman game
+
+words = (
+"No One Mourns the Wicked", 
+"The Wizard and I", 
+"What Is This Feeling?", 
+"Something Bad", 
+"Dancing Through Life", 
+"Popular", 
+"I’m Not That Girl", 
+"One Short Day", 
+"Defying Gravity", 
+"Thank Goodness", 
+"Wonderful", 
+"I’m Not That Girl (Reprise)", 
+"As Long as You’re Mine", 
+"No Good Deed", 
+"March of the Witch Hunters", 
+"For Good", 
+"Finale", 
+"Elphaba", 
+"Glinda", 
+"Fiyero", 
+"The Wizard", 
+"Madame Morrible", 
+"Nessarose", 
+"Boq", 
+"Doctor Dillamond", 
+"Chistery"
+) #random set of words

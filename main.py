@@ -1,8 +1,7 @@
 # Hangman in python
 
+from wordlist import words #import words from wordlist.py
 import random # random module
-
-words = ("apple", "orange", "banana", "coconut", "pineapple") #random set of words
 
 #dictionary of key:() --> ASCII art 
 hangman_art = {0: ("   ",
@@ -62,14 +61,37 @@ def main(): #to run the game
     while is_running: #while loop - while game is running
         display_man(wrong_guesses) #call function display_man and pass wrong_guesses
         display_hint(hint) #call function display_hint and pass hint -- list of letters and underscores
-        guess = input("Guess a letter: ").lower() #input guess from user -- .lower() to make letter lowercase
+        guess = input("Guess a letter: ")
 
         #input validation
+        if len(guess) != 1 or not guess.isalpha(): #if they type in a word or if they type a number - isaplha checks if it is from alphabet
+            print("Invalid input")
+            continue
+
+        if guess in guessed_letters: #if new guess is already in guessed letters 
+            print(f"{guess} is already guessed")
+            continue
+
+        guessed_letters.add(guess) #add guess to set of guessed letters
 
         if guess in answer: #if guess is in answer -- in is a membership operator
             for i in range(len(answer)): #for i in range of length of answer
                 if answer[i] == guess: #if we guess a correct letter 
                     hint[i] = guess #show the letter in the hint
+
+        else: 
+            wrong_guesses += 1 #increment wrong guesses by 1 so now ASCII art updates
+
+        if "_" not in hint: #if there are no underscores left in hing -- so they guessed the entire word
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("You win!")
+            is_running = False #stop game
+        elif wrong_guesses >= len(hangman_art) - 1: #elif == elseif
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("You lose!")
+            is_running = False #stop game
     
 
 if __name__ == "__main__":
